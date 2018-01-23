@@ -12,10 +12,12 @@ def get_rand_color():
     return random.random(), random.random(), random.random()
 
 class PdfCanvas():
-    def __init__(self, file_prefix, append_time=True, width_in=8.5, height_in=11, inch=72, margin_in=1, header_h_in=1.5):
+    def __init__(self, file_prefix, append_time=True, width_in=8.5, height_in=11, inch=72, margin_in=1, header_h_in=1.5, folder="sheets"):
         if append_time:
             cur_time = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
-            file_name = "{}_{}.pdf".format(file_prefix, cur_time)
+            file_name = "{}/{}_{}.pdf".format(folder, file_prefix, cur_time)
+            
+        self.file_name = file_name
         self.canvas = canvas.Canvas(file_name, pagesize=(width_in * inch, height_in * inch))
         self.c = self.canvas
         self.width_in = width_in

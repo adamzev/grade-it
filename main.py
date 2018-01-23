@@ -5,7 +5,6 @@ specs = {
     "problem_type": "add",
     "problem_count": 16,
 }
-my_gen = WorksheetGen("add", specs)
+my_gen = WorksheetGen("add", "add", specs)
 
 sheet = my_gen.create_sheet()
-print(sheet)

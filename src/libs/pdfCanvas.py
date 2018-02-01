@@ -8,9 +8,6 @@ import PyPDF2
 from reportlab.pdfgen import canvas
 from time import gmtime, strftime
 
-def get_rand_color():
-    return random.random(), random.random(), random.random()
-
 class PdfCanvas():
     def __init__(self, file_prefix, append_time=True, width_in=8.5, height_in=11, inch=72, margin_in=1, header_h_in=1.5, folder="sheets"):
         if append_time:

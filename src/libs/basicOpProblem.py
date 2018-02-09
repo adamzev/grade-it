@@ -4,12 +4,18 @@ import random
 class BasicOpProblem:
     """ This module allows the creation of basic operation problems involving two numbers
     """
+
+    ADD = "add"
+    SUB = "sub"
+    MULT = "mult"
+    DIV = "div"
+
     operators = {
-        'add' : '+',
-        'sub' : u"\u2796", # Heavy Minus http://www.fileformat.info/info/unicode/char/2796/index.htm
+        ADD : '+',
+        SUB : u"\u2796", # Heavy Minus http://www.fileformat.info/info/unicode/char/2796/index.htm
             # u"\u2212" # Minus http://www.fileformat.info/info/unicode/char/2212/index.htm
-        'mult' : '\xc3\x97',
-        'div' :  '\xc3\xb7'
+        MULT : '\xc3\x97',
+        DIV:  '\xc3\xb7'
     }
     def __init__(self, operation=None, num1=None, num2=None):
         """ Create a new adding ("add"), subtraction ("sub"), multiplication ("mult") or division ("div") operation
@@ -43,16 +49,16 @@ class BasicOpProblem:
         elif self.operation == "div":
             return self.num1 // self.num2
 
-    def set_nums(self, min_=1, max_=10):
+    def randomize_nums(self, min_value=1, max_value=10):
         ''' sets num1 and num2 to a randomized min and max value in the given range '''
-        if min_ > max_:
+        if min_value > max_value:
             raise ValueError("Min must be less than max")
-        self.num1 = random.randint(min_, max_)
-        self.num2 = random.randint(min_, max_)
+        self.num1 = random.randint(min_value, max_value)
+        self.num2 = random.randint(min_value, max_value)
 
 
-    def set_num1(self, min_=1, max_=10):
-        self.num1 = random.randint(min_, max_)
+    def set_num1(self, min_value=1, max_value=10):
+        self.num1 = random.randint(min_value, max_value)
 
-    def set_num2(self, min_=1, max_=10):
-        self.num2 = random.randint(min_, max_)
+    def set_num2(self, min_value=1, max_value=10):
+        self.num2 = random.randint(min_value, max_value)

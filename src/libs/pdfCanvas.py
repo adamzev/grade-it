@@ -9,20 +9,20 @@ from reportlab.pdfgen import canvas
 from time import gmtime, strftime
 
 class PdfCanvas():
-    def __init__(self, file_prefix, append_time=True, width_in=8.5, height_in=11, inch=72, margin_in=1, header_h_in=1.5, folder="sheets"):
+    def __init__(self, file_prefix, append_time=True, page_size_in=(8.5, 11), inch=72, margin_in=1, folder="sheets"):
         if append_time:
             cur_time = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
             file_name = "{}/{}_{}.pdf".format(folder, file_prefix, cur_time)
             
         self.file_name = file_name
-        self.canvas = canvas.Canvas(file_name, pagesize=(width_in * inch, height_in * inch))
+        self.canvas = canvas.Canvas(file_name, pagesize=(page_size_in[0] * inch, page_size_in[1] * inch))
         self.c = self.canvas
-        self.width_in = width_in
-        self.height_in = height_in
+        self.width_in = page_size_in[0]
+        self.height_in = page_size_in[1]
         self.inch  = inch # size of an inch in pixels
         self.margin_in = margin_in
-        self.top_of_page = inch * height_in
-        self.header_h_in = header_h_in
+        self.top_of_page = inch * page_size_in[1]
+        self.header_h_in = 1.5
         self.set_useable_area()
         self.header_w_px = self.useable_w_px
         self.content_w_px = self.useable_w_px

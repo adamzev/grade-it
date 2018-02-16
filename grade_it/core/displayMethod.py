@@ -1,5 +1,15 @@
 from core.reportLabDoc import ReportLabDoc
 from core.problem_sets import problem_number
+SCREEN = "screen"
+
+methods = {
+    SCREEN: ScreenDisplay,
+    "report_lab": ReportLabDisplay
+}
+
+def dipslay(medium, problems, specs):
+    methods[medium](problems, specs)
+
 
 def ScreenDisplay(problems, specs={}):
     for i, problem in enumerate(problems):

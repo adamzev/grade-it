@@ -1,5 +1,3 @@
-from core.pdfCanvas import PdfCanvas
-from core.drawProblem import DrawProblem
 from core.basicOpProblem import BasicOpProblem
 from core.textProblem import TextProblem
 
@@ -7,6 +5,10 @@ from core.displayMethod import ScreenDisplay, ReportLabDisplay
 
 from core.problem_sets import create_problems, get_ans_text
 from lib.qr import get_qr_code
+
+SCREEN = "screen"
+PDF = "pdf"
+# TODO rename BasicOp to SimpleArthimatic
 
 def generate_worksheet(worksheet_specs, display_method="pdf"):
     # store the data
@@ -55,4 +57,6 @@ if __name__ == "__main__":
             }
         ]
     }
-    generate_worksheet(worksheet_specs, display_method="pdf")
+
+    
+    generate_worksheet(worksheet_specs, display_method=PDF)

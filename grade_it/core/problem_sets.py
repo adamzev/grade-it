@@ -3,7 +3,7 @@ def problem_number(num, seperator=") "):
 
 def create_problems(problem_count, problem_type, problem_specs):
     problem_set = []
-    for i in range(problem_count):
+    for _ in range(problem_count):
         problem_set.append(problem_type(problem_specs))
     return problem_set
 

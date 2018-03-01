@@ -10,9 +10,10 @@ __all__=(
 from reportlab.lib.colors import white, black
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.lib.fonts import tt2ps
-from reportlab.rl_config import canvas_basefontname as _baseFontName, \
-                                baseUnderlineProportion as _baseUnderlineProportion, \
+from reportlab.rl_config import baseUnderlineProportion as _baseUnderlineProportion, \
                                 spaceShrinkage
+
+_baseFontName = "Courier"
 _baseFontNameB = tt2ps(_baseFontName,1,0)
 _baseFontNameI = tt2ps(_baseFontName,0,1)
 _baseFontNameBI = tt2ps(_baseFontName,1,1)

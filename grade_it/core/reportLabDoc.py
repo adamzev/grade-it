@@ -61,11 +61,12 @@ class ReportLabDoc():
     
     def header(self):
         company_name = Paragraph("Tiny-Robot", self.styleSheet["Heading3"])
-        name = Paragraph("Name:  _________________________", self.styleSheet["Heading3"])
+        name = Paragraph("Name:  ______________________", self.styleSheet["Heading3"])
         subject = Paragraph("Addition", self.styleSheet["Heading3"])
-        date = Paragraph("Date:  _________________________", self.styleSheet["Heading3"])
-        data = [[company_name, name], [subject, date]]
+        date = Paragraph("Date:  ______________________", self.styleSheet["Heading3"])
+        form_code = Paragraph("Form Code: {}".format(self.specs['random_seed']), self.styleSheet["Heading3"])
 
+        # TODO change from if statements and so far, there are 4 layouts (yes/no form code and yes/no qr code)
         if self.specs['qr']:
             qr_image = Image(self.specs['qr_file'])
             data = [[company_name, qr_image], [subject, ""], [name, ""], [date, ""]]
@@ -75,6 +76,14 @@ class ReportLabDoc():
                             ('SPAN', (1,0), (1,3)),
                             
             ])
+        elif self.specs['form_code']:
+            data = [[company_name, form_code], [subject, ""], [name, ""], [date, ""]]
+            t=Table(data, style=[
+                            ("VALIGN", (0,3), (0,3), "TOP"),
+                            ('ALIGN', (1,0), (1,3),'RIGHT'),
+                            
+            ])
+            
         else:
             data = [[company_name, name], [subject, date]]
             t=Table(data,colWidths='*', style=[

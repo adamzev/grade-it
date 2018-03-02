@@ -31,9 +31,8 @@ def get_qr_code(data, file_prefix, size="normal", file_ext="png"):
     # img.save("image.png")
     # img.save("image.bmp")
     # img.save("image.jpeg")
-    os.path.abspath(os.path.join(file_dir, os.pardir, os.pardir))
-    file_dir = os.path.join(file_dir, os.pardir)
-    folder = os.path.join(file_dir, "img", "qr")
+    
+    folder = os.path.abspath(os.path.join(file_dir, "static", "img", "qr"))
     print(folder)
     files = glob.glob("{}/{}*.{}".format(folder, file_prefix, file_ext))
     file_nums = [0]

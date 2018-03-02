@@ -46,7 +46,7 @@ class BasicOpProblem:
     @property
     def ans(self):
         ''' returns the automatically computered ans based on num1, num2 and the operation '''
-        if not self.num1 or not self.num2:
+        if self.num1 == None or self.num2 == None:
             raise ValueError("Answer not set yet. Num1 and Num2 are required.")
         if self.operation == "add":
             return self.num1 + self.num2

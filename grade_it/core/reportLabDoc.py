@@ -67,7 +67,9 @@ class ReportLabDoc():
         form_code = Paragraph("Form Code: {}".format(self.specs['random_seed']), self.styleSheet["Heading3"])
 
         # TODO change from if statements and so far, there are 4 layouts (yes/no form code and yes/no qr code)
-        if self.specs['qr']:
+        has_qr = self.specs.get('qr')
+        has_form_code = self.specs.get('form_code')
+        if has_qr:
             qr_image = Image(self.specs['qr_file'])
             data = [[company_name, qr_image], [subject, ""], [name, ""], [date, ""]]
             t=Table(data, style=[
@@ -76,7 +78,7 @@ class ReportLabDoc():
                             ('SPAN', (1,0), (1,3)),
                             
             ])
-        elif self.specs['form_code']:
+        elif has_form_code:
             data = [[company_name, form_code], [subject, ""], [name, ""], [date, ""]]
             t=Table(data, style=[
                             ("VALIGN", (0,3), (0,3), "TOP"),

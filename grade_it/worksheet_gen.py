@@ -41,7 +41,6 @@ def generate_worksheet(worksheet_specs, display_method="pdf"):
         problems.extend(create_problems(problem_group['count'], p_type, problem_group['specs']))
     ans_text = get_ans(problems, "text")
     ans_list = get_ans(problems, "list")
-    print(ans_list)
 
     if worksheet_specs['qr']:
         # TODO: switch magic number of 320 to be a calculation regarding how big the qr code will be
@@ -58,7 +57,7 @@ def generate_worksheet(worksheet_specs, display_method="pdf"):
         ScreenDisplay(problems)
     
     if display_method == "report_lab_pdf" or display_method == "pdf":
-        ReportLabDisplay(problems, worksheet_specs)
+        return ReportLabDisplay(problems, worksheet_specs)
 
 if __name__ == "__main__":
     worksheet_specs = {

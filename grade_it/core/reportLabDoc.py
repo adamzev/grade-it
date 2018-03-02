@@ -33,9 +33,9 @@ class ReportLabDoc():
         self.folder = self.specs['folder']
         self.problems = problems
 
-        file_name = self.file_name()
+        self.file_name = self.get_file_name()
         self.styleSheet = getWorksheetStyleSheet()
-        doc = SimpleDocTemplate(file_name, pagesize=self.paper_size[self.specs['paper_size']])
+        doc = SimpleDocTemplate(self.file_name, pagesize=self.paper_size[self.specs['paper_size']])
 
 
         # container for the 'Flowable' objects
@@ -51,7 +51,7 @@ class ReportLabDoc():
         self.body()
         doc.build(self.worksheet)
 
-    def file_name(self):
+    def get_file_name(self):
         if self.specs['append_time']:
             cur_time = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
             file_name = "{}/{}_{}.pdf".format(self.folder, self.name, cur_time)

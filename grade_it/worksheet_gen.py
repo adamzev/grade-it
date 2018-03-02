@@ -80,5 +80,5 @@ if __name__ == "__main__":
         ]
     }
 
-    
+
     generate_worksheet(worksheet_specs, display_method=PDF)
